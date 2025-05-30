@@ -98,4 +98,293 @@
   <script src="script.js"></script>
 </body>
 </html>
+/* Fonts */
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
+  background-color: #0a0a0a;
+  color: #f5f5f5;
+}
 
+/* Light mode */
+body.light {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(8px);
+}
+
+body.light .navbar {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.navbar .logo {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2rem;
+  color: #fff;
+}
+
+body.light .navbar .logo {
+  color: #111;
+}
+
+.navbar nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+body.light .navbar nav a {
+  color: #111;
+}
+
+.navbar nav a:hover {
+  color: #ff4c4c;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  background: url('https://i.ibb.co/0Jmshvb/nike-style-banner.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+}
+
+body.light .hero {
+  color: #111;
+}
+
+.hero-text {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+body.light .hero-text {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.hero-text h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 5rem;
+  margin: 0;
+}
+
+.hero-text .tagline {
+  font-size: 1.5rem;
+  margin: 1rem 0 2rem;
+}
+
+/* Button */
+.btn {
+  background: #ff4c4c;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #e03c3c;
+}
+
+/* Sections */
+.section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-family: 'Permanent Marker', cursive;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.item {
+  background-color: #1c1c1c;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  width: 280px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+.item img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.add-to-cart {
+  margin-top: 1rem;
+  background-color: #ff3333;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #e60000;
+}
+
+/* Items */
+.items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.item {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 250px;
+  transition: transform 0.3s;
+  will-change: transform;
+  color: #fff;
+}
+
+body.light .item {
+  background: #f1f1f1;
+  color: #111;
+}
+
+.item img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.item p {
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #222;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+body.light .theme-toggle {
+  background: #ddd;
+  color: #111;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  background: #111;
+  color: #aaa;
+}
+
+body.light .footer {
+  background: #f5f5f5;
+  color: #444;
+}
+
+  function toggleTheme() {
+  document.body.classList.toggle("light");
+  const icon = document.getElementById("toggle-icon");
+  icon.textContent = document.body.classList.contains("light") ? "☀️" : "🌙";
+}
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray('.reveal').forEach((el) => {
+  gsap.from(el, {
+    opacity: 0,
+    y: 80,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: el,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
+});
+
+document.querySelectorAll('.item').forEach(item => {
+  item.addEventListener('mousemove', e => {
+    const rect = item.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * 10;
+    const rotateY = ((x - centerX) / centerX) * -10;
+
+    gsap.to(item, {
+      rotationX: rotateX,
+      rotationY: rotateY,
+      duration: 0.3,
+      transformPerspective: 1000,
+      transformOrigin: "center"
+    });
+  });
+
+  item.addEventListener('mouseleave', () => {
+    gsap.to(item, {
+      rotationX: 0,
+      rotationY: 0,
+      duration: 0.3
+    });
+  });
+});
+const cartButtons = document.querySelectorAll('.add-to-cart');
+cartButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    alert('Item added to cart!');
+  });
+});
+  </style>
